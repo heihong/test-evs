@@ -17,3 +17,8 @@ export const loadAddBook = createAction(
   '[Book] Add book',
   props<{ payload: fromReducer.BookList }>()
 );
+
+export const loadAddBookRequestSuccess = createAction(
+  '[Book] Add book success',
+  props<{ payload: fromReducer.BookList }>()
+);

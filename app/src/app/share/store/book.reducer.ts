@@ -28,6 +28,11 @@ const initBookReducer = createReducer(
     ...state,
     bookList: action.payload,
     isLoading: false,
+  })),
+  on(fromActions.loadAddBookRequestSuccess, (state, action) => ({
+    ...state,
+    bookList: [...state.bookList, action.payload],
+    isLoading: false,
   }))
 );
 

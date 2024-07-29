@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY, of } from 'rxjs';
-import { map, mergeMap, catchError, tap } from 'rxjs/operators';
+import { map, mergeMap, catchError, tap, switchMap } from 'rxjs/operators';
 import * as fromActions from './book.action';
 import { HttpClient } from '@angular/common/http';
 import { BookList } from './book.reducer';
@@ -30,8 +30,8 @@ export class BookEffects {
       ofType(fromActions.loadAddBook),
       mergeMap(({ payload }) =>
         this.http.post<any>('http://localhost:3000/api/items', payload).pipe(
-          map((result: BookList[]) => {
-            return fromActions.loadRequestSuccess({ payload: result });
+          map((result: BookList) => {
+            return fromActions.loadAddBookRequestSuccess({ payload: result });
           }),
           catchError((error) => of(fromActions.loadRequestFailure(error)))
         )
