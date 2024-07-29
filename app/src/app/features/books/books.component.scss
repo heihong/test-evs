@@ -1,0 +1,20 @@
+.books {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    &__book-list{
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        
+    }
+
+    &__book-elt{
+        margin-right: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90px;
+        border: 1px solid black;
+    }
+}

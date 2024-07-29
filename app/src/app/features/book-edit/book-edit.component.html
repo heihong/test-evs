@@ -1,0 +1,10 @@
+<h2>Ajouter un livre</h2>
+<form [formGroup]="bookForm" (ngSubmit)="sendBook()">
+    <div class="app-input app-margin-b">
+        <label for="title">Titre du livre</label>
+        <input id="title" formControlName="title"/>
+    </div>
+    <button type="submit">envoyé</button>
+</form>
+   
+
