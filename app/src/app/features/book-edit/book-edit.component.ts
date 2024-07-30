@@ -10,7 +10,6 @@ import { Store } from '@ngrx/store';
 import * as fromReducer from './../../share/store/book.reducer';
 import * as fromActions from './../../share/store/book.action';
 import { BookI } from '../../share/models/book.interface';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-edit',
@@ -21,7 +20,6 @@ import { Router } from '@angular/router';
 })
 export class BookEditComponent {
   bookStore = inject(Store<fromReducer.BookState>);
-  router = inject(Router);
   bookForm = new FormGroup({
     title: new FormControl(''),
   });
@@ -30,6 +28,5 @@ export class BookEditComponent {
     this.bookStore.dispatch(
       fromActions.loadAddBook({ payload: this.bookForm.value as BookI })
     );
-    this.router.navigate(['']);
   }
 }

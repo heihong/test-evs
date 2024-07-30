@@ -5,11 +5,13 @@ import { map, mergeMap, catchError, tap, switchMap } from 'rxjs/operators';
 import * as fromActions from './book.action';
 import { HttpClient } from '@angular/common/http';
 import { BookList } from './book.reducer';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class BookEffects {
   http = inject(HttpClient);
   actions$ = inject(Actions);
+  router = inject(Router);
 
   loadRequest$ = createEffect(() => {
     return this.actions$.pipe(
@@ -33,6 +35,7 @@ export class BookEffects {
           map((result: BookList) => {
             return fromActions.loadAddBookRequestSuccess({ payload: result });
           }),
+          tap(() => this.router.navigate([''])),
           catchError((error) => of(fromActions.loadRequestFailure(error)))
         )
       )
