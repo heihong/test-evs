@@ -35,10 +35,18 @@ export class BookEffects {
           map((result: BookList) => {
             return fromActions.loadAddBookRequestSuccess({ payload: result });
           }),
-          tap(() => this.router.navigate([''])),
           catchError((error) => of(fromActions.loadRequestFailure(error)))
         )
       )
     );
   });
+
+  loadAddBookRequestSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(fromActions.loadAddBookRequestSuccess),
+        tap(() => this.router.navigate(['']))
+      ),
+    { dispatch: false }
+  );
 }
