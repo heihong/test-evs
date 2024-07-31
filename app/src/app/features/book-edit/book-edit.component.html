@@ -1,8 +1,11 @@
 <h2>Ajouter un livre</h2>
 <form [formGroup]="bookForm" (ngSubmit)="sendBook()">
-    <div class="app-input app-margin-b">
+    <div class="app-input app-margin-b edit__input">
         <label for="title">Titre du livre</label>
-        <input id="title" formControlName="title"/>
+        <input [ngClass]="{'edit__input__error':bookForm.invalid && submit}" formControlName="title" required/>
+        @if(bookForm.invalid && submit){
+            <p class="edit__error edit__p">le champ est obligatoire</p>
+        }
     </div>
     <button type="submit">Envoyer</button>
 </form>

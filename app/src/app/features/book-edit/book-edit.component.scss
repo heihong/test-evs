@@ -1,3 +1,16 @@
 .edit {
+   &__error {
+    color:red;
+   }
+   &__input {
+    height: 71px;
+
+    &__error {
+        border:1px solid red
+    }
+   }
    
+   &__p {
+    margin: 10px 0 0 0;
+   }
 }

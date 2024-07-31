@@ -38,6 +38,12 @@ describe('BookEditComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should not call dispatch', () => {
+    spyOn(store, 'dispatch');
+    component.sendBook();
+    expect(store.dispatch).not.toHaveBeenCalled();
+  });
+
   it('should call dispatch', () => {
     component.bookForm.patchValue({ title: 'livre2' });
     spyOn(store, 'dispatch');
